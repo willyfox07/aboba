@@ -61,7 +61,7 @@ jobs:
      - name: Install coverage
        run: |
            pip install coverage
-           coverage run --source=django_project django_project/manage.py test  django_app
+           coverage run --source=django_project manage.py test  django_app
      - name: Execute migrations
        run: |
            python3 django_project/manage.py migrate
