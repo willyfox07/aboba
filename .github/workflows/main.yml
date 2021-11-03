@@ -64,7 +64,7 @@ jobs:
            coverage run --source=django_project manage.py test blog users
      - name: Execute migrations
        run: |
-           python3 django_project/manage.py migrate
+           python3 manage.py migrate
      - name: Coveralls GitHub Action
        env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
