@@ -52,7 +52,7 @@ jobs:
 
      - name: Pylint load-plugin
        run:
-          pylint --load-plugins=pylint_django --django-settings-module=django_project.settings django_project/*
+          pylint --load-plugins=pylint_django --django-settings-module=django_project.settings *
 
 
      - name: Install Coveralls
