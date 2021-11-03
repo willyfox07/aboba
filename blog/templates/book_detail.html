@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+<body>
+{% block content %}
+    <div class="about">
+        <img src="{{ Book.image.url}}" alt="{{ Book.title }}">
+        <p>{{ Book.title }}</p>
+        <p>{{ Book.publication }}</p>
+        <p>{{ Book.page_count }}</p>
+        <p>{{ Book.author }}</p>
+        <p> {{ Book.language }}</p>
+        <p> {{ Book.review }}</p>
+        <form method="get" action="{% url 'EditBook' Book.slug %}">
+            {% csrf_token %}
+            <button class="submit">Редактировать</button>
+        </form>
+        <form action="{% url 'DeleteBook' Book.slug%}" method="get">
+            <button class="red" type="submit" >Удалить</button>
+        </form>
+
+    </div>
+
+
+{% endblock %}
+</body>

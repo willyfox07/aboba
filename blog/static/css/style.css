@@ -1,0 +1,121 @@
+html{
+	height: 100%;
+}
+body {
+	position: relative;
+	min-height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	background-image:  url("../img/stephan.jpg");
+	background-attachment:fixed;
+	background-size: cover;
+	border: none;
+}
+.navigation {
+	position: fixed;
+  	width: 100%;
+  	left: 0px;
+  	top: 0px;
+  	background-color: rgb(47, 79, 79);
+  	overflow: auto;
+}
+
+.navigation a {
+ 	 float: left;
+  	padding: 18px;
+  	color: white;
+  	text-decoration: none;
+  	font-size: 18px;
+}
+
+.navigation a:hover {
+  	background-color: rgb(47, 100, 90);
+}
+
+.active {
+ 	 background-color: #04AA6D;
+}
+
+@media screen and (max-width: 500px) {
+  .navigation a {
+    float: none;
+    display: block;
+  }
+}
+a.log_out{
+ 	float: right;
+    text-align: center;
+    padding: 19px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Стиль для основного контента библиотеки */
+.main{
+	max-width: 60%;
+	margin: 10px auto 100px auto;
+	box-sizing: border-box;
+}
+
+img{
+	height: 500px;
+	width: 300px;
+
+}
+
+.column{
+	margin: 15px 15px 15px 15px;
+	float: left;
+	text-align: center;
+}
+
+
+/* Конец стиля библиотеки*/
+/* Стиль для деталей книги*/
+.about{
+	align-items: center;
+	max-width: 500px;
+	margin: 200px auto 50px auto;
+	text-align: center;
+}
+
+
+
+/*Конец стиля деталей книги*/
+.submit{
+	margin: 15px;
+	background-color: rgb(47, 79, 79);
+	color: white;
+	width: 300px;
+	height: 40px;
+	border-color: rgb(47, 90, 79);
+}
+.submit:hover{
+	background-color: rgb(47, 100, 90);
+}
+.red{
+	margin: 30px;
+	background-color: rgb(200, 79, 79);
+	color: white;
+	width: 300px;
+	height: 40px;
+	border-color: rgb(200, 79, 79);
+}
+.red:hover{
+	background-color: rgb(250, 79, 79);
+}
+@media only screen and (max-width: 500px) {
+
+
+  	.navigation a{
+  	float: none;
+    display: block;
+  	padding: 15px;
+  	font-size: 15px;
+  	float: none;
+  	text-align: center;
+  	}
+  	.main{
+  		margin: 40% 13% 20% 7%;
+  	}
+}
