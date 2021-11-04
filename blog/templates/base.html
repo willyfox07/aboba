@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Main page</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css" integrity="sha512-8Tb+T7SKUFQWOPIQCaLDWWe1K/SY8hvHl7brOH8Nz5z1VT8fnf8B+9neoUzmFY3OzkWMMs3OjrwZALgB1oXFBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+{% if user.is_authenticated %}
+    <div class="navigation">
+        <a href="{% url 'BookList' %}"><i class="book icon"></i>Your Library</a>
+        <!--<a href=""><i class="video icon"></i>Video</a>
+		<a href=""><i class="user icon"></i>Profile</a>
+		<a href=""><i class="users icon"></i>Users</a>-->
+        <a class="log_out" href="{% url 'logout' %}"><i class="sign out alternate icon"></i>Log out</a>
+    </div>
+{% endif %}
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

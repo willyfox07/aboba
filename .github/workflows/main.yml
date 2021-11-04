@@ -1,0 +1,71 @@
+name: CI
+
+# Controls when the workflow will run
+on: [push, pull_request]
+
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+         python-version: [3.6, 3.7, 3.8, 3.9]
+         database-name:
+           - 'django_blog'
+         database-password:
+           - 'leevan97'
+         database-user:
+           - 'alex'
+         database-host:
+           - 127.0.0.1
+         database-prt:
+           - 5432
+
+    services:
+      postgres:
+        image: postgres:10.8
+        env:
+          POSTGRES_DB: ${{ matrix.database-name }}
+          POSTGRES_USER: ${{ matrix.database-user }}
+          POSTGRES_PASSWORD: ${{ matrix.database-password }}
+        ports:
+          - 5432:5432
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+     - uses: actions/checkout@v2
+     - name: Set up Python ${{ matrix.python-version }}
+       uses: actions/setup-python@v1
+       with:
+            python-version: ${{ matrix.python-version }}
+
+     - name: Install dependencies
+       run: |
+          python -m pip install --upgrade pip
+          pip install pylint pylint-django
+          pip install -r requirements.txt
+
+     - name: Pylint load-plugin
+       run:
+          pylint --load-plugins=pylint_django --django-settings-module=django_project.settings *
+
+
+     - name: Install Coveralls
+       run:  pip install coveralls
+
+     - name: Install coverage
+       run: |
+           pip install coverage
+           coverage run --source=django_project manage.py test blog users
+     - name: Execute migrations
+       run: |
+           python3 manage.py migrate
+     - name: Coveralls GitHub Action
+       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       run: coveralls --service=github
