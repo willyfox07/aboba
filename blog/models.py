@@ -1,6 +1,4 @@
 from django.db import models
-
-# Create your models here.
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils.text import slugify
@@ -30,10 +28,6 @@ class Books(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Books, self).save(*args, **kwargs)
-
-
-
-
 
 
 class Language(models.Model):

@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from blog.views import BookView, BookDetailView, EditBookDetail, DeleteBook, CreateBook
 
 urlpatterns = [
