@@ -1,3 +1,4 @@
+"""Module which contain models for blog-application"""
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -17,6 +18,7 @@ class Books(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
 
     class Meta:
+        """Function which contains configuration for parent class"""
         verbose_name = "Книга"
         verbose_name_plural = "Книги"
 
@@ -31,7 +33,7 @@ class Books(models.Model):
     def save(self, *args, **kwargs):
         """Function to automatically create slug"""
         self.slug = slugify(self.title)
-        super(Books, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 class Language(models.Model):
