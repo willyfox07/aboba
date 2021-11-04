@@ -1,3 +1,4 @@
+"""Module with url of blog for blog_application"""
 from django.urls import path
 from blog.views import BookView, BookDetailView, EditBookDetail, DeleteBook, CreateBook
 
