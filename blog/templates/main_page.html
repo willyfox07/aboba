@@ -3,7 +3,6 @@
 
 <body>
     {% block content %}
-    {% if user.is_authenticated %}
          <div class="about">
             <form action="{% url 'CreateBook' %}" >
                 <button class="submit" type="submit">Добавить книгу</button>
@@ -19,14 +18,6 @@
 			</div>
 		</div>
     {% endfor %}
-    {% else %}
-         <div class="about">
-            <p>You are not logged in:</p>
-            <form action="{% url 'login' %}" >
-                <button class="submit" type="submit">Log In</button>
-            </form>
-        </div>
-    {% endif %}
 	</div>
     {% endblock %}
 
