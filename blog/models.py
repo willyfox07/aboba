@@ -2,7 +2,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.utils.text import slugify
+from pytils.translit import slugify
 
 
 class Books(models.Model):
@@ -26,14 +26,17 @@ class Books(models.Model):
         """Function for string representation of a class"""
         return f'{self.author} - {self.title}'
 
+    def save(self, *args, **kwargs):
+        """Function to automatically create slug"""
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
     def get_absolute_url(self):
         """ Function for autodetecting url of a class object """
         return reverse('BookDetail', kwargs={'slug': self.slug})
 
-    def save(self, *args, **kwargs):
-        """Function to automatically create slug"""
-        self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
+
 
 
 class Language(models.Model):
