@@ -42,7 +42,7 @@ class CreateBook(LoginRequiredMixin, generic.CreateView):
         return super(CreateBook, self).form_valid(form)
 
 
-class DeleteBook(LoginRequiredMixin, RedirectToSuccesUrlMixIn,generic.DeleteView):
+class DeleteBook(LoginRequiredMixin, RedirectToSuccesUrlMixIn, generic.DeleteView):
     """View to delete specific book"""
     model = Books
     success_url = reverse_lazy('BookList')

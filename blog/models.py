@@ -9,7 +9,7 @@ class Books(models.Model):
     """CLass for creating book table in database"""
     title = models.CharField(max_length=30, verbose_name="Название")
     publication = models.DateField(verbose_name="Дата издания")
-    page_count = models.IntegerField(max_length=5, verbose_name="Количество страниц")
+    page_count = models.IntegerField( verbose_name="Количество страниц")
     slug = models.SlugField()
     author = models.CharField(max_length=30,  verbose_name="Автор")
     language = models.ForeignKey('Language', on_delete=models.CASCADE, verbose_name="Язык")

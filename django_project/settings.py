@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-8!=m1o*$rq@%%o(crf2fc5$w@x5(nn5fdy9(=k%8#$@sq&m8km
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://arcane-harbor-79117.herokuapp.com/']
+ALLOWED_HOSTS = ['https://arcane-harbor-79117.herokuapp.com/', '0.0.0.0:8000']
 
 
 # Application definition
@@ -83,13 +83,23 @@ django_on_heroku.settings(locals())
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'django_blog',
+#         'USER': 'alex',
+#         'PASSWORD': 'leevan97',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_blog',
-        'USER': 'alex',
-        'PASSWORD': 'leevan97',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '123321',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
